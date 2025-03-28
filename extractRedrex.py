@@ -23,8 +23,13 @@ def extractRedrex(file_name):
         os.makedirs("downloads/excel")
     pddf.to_excel(f"downloads/excel/{file_name}.xlsx", index=False)
     
-dir = os.path.join(os.getcwd(), "downloads/pdf")
-for file in os.listdir(dir):
-    if file.startswith('Redrex') and file.endswith(".pdf"):
-        #print(file[:-4])
-        extractRedrex(file[:-4])
+    
+if __name__ == "__main__":
+    if os.path.exists("downloads/pdf"):
+        dir = os.path.join(os.getcwd(), "downloads/pdf")
+        for file in os.listdir(dir):
+            if file.startswith('Redrex') and file.endswith(".pdf"):
+                #print(file[:-4])
+                extractRedrex(file[:-4])
+    else:
+        print("Directory not found")
